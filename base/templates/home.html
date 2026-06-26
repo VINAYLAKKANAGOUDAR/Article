@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+{% block css %}
+<link rel="stylesheet" href="{% static './css/home.css' %}">
+{% endblock %}
+<div class="container">
+    {% for i in data %}
+    <div class="card">
+        <div class="image">
+            <img src="{{i.pic}}" alt="">
+        </div>
+
+        <div class="title">
+            {{i.title}}
+        </div>
+
+        <div class="disc">
+            {{i.disc|truncatewords:4}}
+        </div>
+
+        <div class="readmore">
+          <a href="{% url 'read' i.id %}">Readmore</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}
